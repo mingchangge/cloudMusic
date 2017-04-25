@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- 1、如果支持Google Chrome Frame：GCF，则使用GCF渲染；2、如果系统安装ie8或以上版本，则使用最高版本ie渲染；3、否则，这个设定可以忽略。 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <!-- 对视窗缩放等级进行限制，使其适应移动端屏幕大小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 当把这个网页添加到主屏幕时的标题（仅限IOS） -->
+    <meta name="apple-mobile-web-app-title" content="网易云音乐">
+    <!-- 添加到主屏幕后全屏显示 -->
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>网易云音乐</title>
+    <link rel="SHORTCUT ICON" href="./static/img/music.ico"/>
+    <style>
+    	*{
+    		padding:0;
+    		margin: 0; 
+    	}
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script type="text/javascript">
+        /* 判断用户的设备，跳转到相应的页面 */
+        function browserRedirect() {
+           var sUserAgent = navigator.userAgent.toLowerCase();
+           var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+           var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+           var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+           var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+           var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+           var bIsAndroid = sUserAgent.match(/android/i) == "android";
+           var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+           var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+           if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+               location.href = "http://localhost:8080/#/phone/Phone";
+               console.log("phone");
+           } else {
+               location.href = "http://localhost:8080/#/";
+               console.log("pc");
+           }
+       }
+       browserRedirect();
+    </script>
+  </body>
+</html>
